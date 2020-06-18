@@ -1,0 +1,105 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package cola3;
+
+import java.util.Scanner;
+
+public class Cola3 {
+int maximo=100;
+ int i=0;
+int tope=10, aux;
+int num[]=new int[tope];
+    
+
+    public void llenarcola(){
+        
+         num[i] =(int) (Math.random() * maximo);
+            
+                   for ( i=0; i< tope; i++) {
+                num[i] =(int) (Math.random() * maximo);
+                   for(int j=0; j<i;j++){
+                       if(num[i]==num[j]){
+                           i--;
+                       }
+                   }
+               System.out.println(""+num[i]);
+           }
+    }   
+    public void mostrarcola(){
+        if(maximo>0){
+                    System.out.println("los nombres son:");
+                    for(i = 0; i < tope; i++){
+                    System.out.println("posicion de cola["+i+"]=" +num[i]);
+                    }
+                    }else{
+                        System.out.println("la cola esta vacia");
+                    }
+    }
+       
+    public void ordenarcola(){
+         for(int j=0;j<tope;j++){
+                        for( i=0;i<tope-1;i++){
+                            if(num[i]>num[i+1]){
+                             aux=num[i];
+                             num[i]=num[i+1];
+                             num[i+1]=aux;
+                              
+                            }
+                        }
+                        
+                    } 
+                    {
+                        System.out.println("los valores fueron ordenados correctamente");
+                    }
+    }
+    
+    public void vaciarcola(){
+         maximo=0;
+                    System.out.println("la cola se ha vaciado");
+    }
+    public static void main(String[] args) {
+    Scanner leer=new Scanner(System.in);
+       Cola3 cola= new Cola3();
+        int opcion;
+                
+        System.out.println("Bienvenido a mi mundo ");
+        
+        
+        do{
+            
+              System.out.println("1-llenar");
+              System.out.println("2-mostrar");
+              System.out.println("3-ordenar");
+              System.out.println("4-vaciar");
+               System.out.println("5-salir");
+               
+               System.out.print("Opcion es --> ");
+        opcion = leer.nextInt();
+        
+        switch (opcion){
+            
+            case 1:
+               cola.llenarcola();
+                break;               
+            case 2:
+              cola.mostrarcola();              
+                break;
+            case 3:
+                cola.ordenarcola();
+                break;
+                
+            case 4:
+                cola.vaciarcola();
+                break;
+                
+                
+        }
+      }
+      while (opcion!=5);  
+
+    }
+    
+}
